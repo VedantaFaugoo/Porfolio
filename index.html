@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vedanta Faugoo | Administrative Officer Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #dc3545;
+      --bg-color: #dc3545;
+      --text-color: #ffffff;
+      --card-bg: rgba(255, 255, 255, 0.1);
+      --card-border: rgba(255, 255, 255, 0.2);
+      --navbar-bg: rgba(0, 0, 0, 0.2);
+      --shadow: rgba(0, 0, 0, 0.3);
+      --icon-color: #001f3f; /* Navy Blue in red theme */
+    }
+
+    [data-theme="white"] {
+      --primary-color: #dc3545;
+      --bg-color: #ffffff;
+      --text-color: #333333;
+      --card-bg: #f8f9fa;
+      --card-border: #e9ecef;
+      --navbar-bg: #ffffff;
+      --shadow: rgba(0, 0, 0, 0.1);
+      --icon-color: #dc3545; /* Red in white theme */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    /* Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: var(--navbar-bg);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      box-shadow: 0 2px 10px var(--shadow);
+    }
+
+    .nav-brand {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--text-color);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icons a {
+      color: var(--text-color);
+      font-size: 1.3rem;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      transform: translateY(-3px);
+      color: var(--primary-color);
+    }
+
+    .theme-toggle {
+      background: var(--card-bg);
+      border: 2px solid var(--card-border);
+      color: var(--text-color);
+      padding: 0.5rem 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .theme-toggle:hover {
+      transform: scale(1.05);
+      background: var(--primary-color);
+      color: white;
+    }
+
+    /* Header */
+    .header {
+      margin-top: 90px;
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      border: 5px solid var(--card-border);
+      object-fit: cover;
+      margin-bottom: 2rem;
+      box-shadow: 0 8px 20px var(--shadow);
+      transition: all 0.4s ease;
+    }
+
+    .profile-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px var(--shadow);
+    }
+
+    .header h1 {
+      font-size: 2.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .header .title {
+      font-size: 1.5rem;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+    }
+
+    .header .description {
+      max-width: 600px;
+      font-size: 1.1rem;
+      opacity: 0.85;
+      margin: auto;
+    }
+
+    .download-btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: var(--primary-color);
+      color: #fff;
+      border-radius: 30px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px var(--shadow);
+    }
+
+    .download-btn:hover {
+      background: #b02a37;
+      transform: translateY(-3px);
+    }
+
+    /* About Section */
+    .section {
+      padding: 4rem 2rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--primary-color);
+    }
+
+    .about-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px var(--shadow);
+      text-align: justify;
+    }
+
+    /* Skills Section */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 2rem auto;
+    }
+
+    .skill-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 5px 15px var(--shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .skill-item i {
+      font-size: 2rem;
+      color: var(--icon-color);
+      margin-bottom: 0.8rem;
+    }
+
+    .skill-item p {
+      font-weight: 600;
+    }
+
+    .skill-item:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Footer */
+    .footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--navbar-bg);
+      margin-top: 4rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-brand">Vedanta Faugoo</div>
+    <div class="nav-links">
+      <div class="social-icons">
+        <a href="https://linkedin.com/in/vedantafaugoo" target="_blank"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/VedantaFaugoo" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/VedantaFaugoo" target="_blank"><i class="fab fa-x"></i></a>
+        <a href="https://facebook.com/VedantaFaugooProfile" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="https://instagram.com/vedantafaugoo" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://tiktok.com/@vedantafaugoo" target="_blank"><i class="fab fa-tiktok"></i></a>
+      </div>
+      <button class="theme-toggle" onclick="toggleTheme()">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Header -->
+  <header class="header">
+    <img src="Vedanta.png" alt="Profile Picture" class="profile-img">
+    <h1>Vedanta Faugoo</h1>
+    <p class="title">Administrative Officer</p>
+    <p class="description">
+      Dedicated administrative professional with relevant skills in office management, 
+      team coordination, and operational excellence. Passionate about creating efficient 
+      workflows and supporting organizational success.
+    </p>
+    <a href="Vedanta_Faugoo_Resume.pdf" target="_blank" download class="download-btn">
+      <i class="fas fa-download"></i> Download Resume
+    </a>
+  </header>
+
+  <!-- About Me -->
+  <section class="section" id="about">
+    <h2 class="section-title">About Me</h2>
+    <div class="about-card">
+      <p>
+        Vedanta Faugoo is a highly organized and detail-oriented professional seeking to apply strong analytical, 
+        communication, and problem-solving skills in an entry-level Administrative Officer role. With a proactive 
+        mindset and a keen eye for efficiency, Vedanta is eager to contribute to administrative operations by managing 
+        documentation, coordinating office procedures, supporting project management tasks, and ensuring smooth day-to-day 
+        functioning of office environments. Proficient in office software tools, data entry, and record management, and familiar 
+        with scheduling, reporting, and workflow optimization. Known for excellent interpersonal skills, a collaborative attitude, 
+        and the ability to handle multiple priorities with professionalism. Dedicated to delivering accurate, timely, and organized 
+        administrative support while continually learning and growing within the field.
+      </p>
+    </div>
+  </section>
+
+  <!-- Skills & Tools -->
+  <section class="section" id="skills">
+    <h2 class="section-title">Skills & Tools</h2>
+    <div class="skills-grid">
+      <div class="skill-item"><i class="fab fa-google"></i><p>Google Meet</p></div>
+      <div class="skill-item"><i class="fas fa-video"></i><p>Zoom</p></div>
+      <div class="skill-item"><i class="fab fa-microsoft"></i><p>Microsoft Teams</p></div>
+      <div class="skill-item"><i class="fab fa-slack"></i><p>Slack</p></div>
+      <div class="skill-item"><i class="fas fa-calendar-check"></i><p>Scheduling</p></div>
+      <div class="skill-item"><i class="fas fa-file-word"></i><p>MS Office Suite</p></div>
+      <div class="skill-item"><i class="fas fa-palette"></i><p>Design (Canva)</p></div>
+      <div class="skill-item"><i class="fas fa-cloud"></i><p>Adobe Creative Suite</p></div>
+      <div class="skill-item"><i class="fas fa-pen-nib"></i><p>Graphic Design</p></div>
+      <div class="skill-item"><i class="fas fa-chart-line"></i><p>Project Coordination</p></div>
+      <div class="skill-item"><i class="fas fa-database"></i><p>Data Entry</p></div>
+      <div class="skill-item"><i class="fas fa-headset"></i><p>Customer Support</p></div>
+      <div class="skill-item"><i class="fas fa-comments"></i><p>Communication</p></div>
+      <div class="skill-item"><i class="fas fa-lightbulb"></i><p>Problem Solving</p></div>
+      <div class="skill-item"><i class="fas fa-tasks"></i><p>Task Management</p></div>
+      <div class="skill-item"><i class="fas fa-robot"></i><p>AI Tools (ChatGPT, Copilot)</p></div>
+      <div class="skill-item"><i class="fas fa-chart-pie"></i><p>Report Analysis</p></div>
+      <div class="skill-item"><i class="fas fa-users"></i><p>Team Collaboration</p></div>
+      <div class="skill-item"><i class="fas fa-folder-open"></i><p>File Management</p></div>
+      <div class="skill-item"><i class="fas fa-lock"></i><p>Confidentiality</p></div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Vedanta Faugoo. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const themeIcon = document.getElementById('themeIcon');
+      const currentTheme = body.getAttribute('data-theme');
+      if (currentTheme === 'white') {
+        body.removeAttribute('data-theme');
+        themeIcon.className = 'fas fa-moon';
+        localStorage.setItem('theme', 'red');
+      } else {
+        body.setAttribute('data-theme', 'white');
+        themeIcon.className = 'fas fa-sun';
+        localStorage.setItem('theme', 'white');
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      const themeIcon = document.getElementById('themeIcon');
+      if (savedTheme === 'white') {
+        document.body.setAttribute('data-theme', 'white');
+        themeIcon.className = 'fas fa-sun';
+      }
+    });
+  </script>
+</body>
+</html>
